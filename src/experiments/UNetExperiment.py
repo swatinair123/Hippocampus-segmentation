@@ -103,7 +103,7 @@ class UNetExperiment:
             # Feed data to the model and feed target to the loss function
             # 
             data = batch['image']
-            target = batch['seg']
+            target = batch['seg'].long()
 
             prediction = self.model(data)
             

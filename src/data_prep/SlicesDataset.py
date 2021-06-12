@@ -29,25 +29,27 @@ class SlicesDataset(Dataset):
         Returns:
             Dictionary of 2 Torch Tensors of dimensions [1, W, H]
         """
-        print(idx)
+        #print(idx)
         slc = self.slices[idx]
         sample = dict()
         sample["id"] = idx
-        x = self.data[slc[0]]["image"][slc[1]]
-        t = torch.from_numpy(x)
-        print(type(x))
+        sample["image"] = torch.from_numpy(self.data[slc[0]]["image"][slc[1]]).type(torch.FloatTensor).unsqueeze(0)
+#         x = self.data[slc[0]]["image"][slc[1]]
+#         t = torch.from_numpy(x)
+#         print(type(x))
         
-        sample["image"]=[1,t]
+        #sample["image"]=[1,t]
         #print(self.data[slc[0]]["image"][slc[1]])
         #print(self.data[slc[0]]["seg"])
 #         import cv2
 #         cv2.imshow("slc",slc)
 #         cv2.waitKey(0)
-        print(slc[0])
-        print(slc[1])
-        y=self.data[slc[0]]["seg"][slc[1]]
-        y_t=torch.from_numpy(y)
-        sample["seg"]=[1,y_t]
+#         print(slc[0])
+#         print(slc[1])
+        #y=self.data[slc[0]]["seg"][slc[1]]
+        #y_t=torch.from_numpy(y)
+        sample["seg"] = torch.from_numpy(self.data[slc[0]]["seg"][slc[1]]).type(torch.FloatTensor).unsqueeze(0)
+        #sample["seg"]=[1,y_t]
         #clear
         
         # You could implement caching strategy here if dataset is too large to fit
