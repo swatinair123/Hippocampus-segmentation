@@ -31,6 +31,7 @@ if __name__ == "__main__":
     c.root_dir = "/home/workspace/input/"
     c.n_epochs = 10
     c.learning_rate = 0.0002
+   
     c.batch_size = 8
     c.patch_size = 64
     c.test_results_dir = "/home/workspace/output/"
@@ -46,9 +47,10 @@ if __name__ == "__main__":
     # Create test-train-val split
     # In a real world scenario you would probably do multiple splits for 
     # multi-fold training to improve your model quality
-
+    print("-------------------------------------------------------")
+    print("the length of curated data",len(data))
     keys = range(len(data))
-
+    
     # Here, random permutation of keys array would be useful in case if we do something like 
     # a k-fold training and combining the results. 
 
